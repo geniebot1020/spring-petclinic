@@ -19,5 +19,13 @@ pipeline {
         sh 'docker build -t shanem/spring-petclinic:latest .'
       }
     }
+
+	stage('Docker Run') {
+      agent any
+      steps {
+        sh 'docker run -it -d -p 8081:8080 shanem/spring-petclinic:latest'
+      }
+    }
+
   }
 }
